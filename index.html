@@ -1,0 +1,2446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style type="text/css">
+    :root {
+      --docsifytabs-border-color: #ededed;
+      --docsifytabs-border-px: 1px;
+      --docsifytabs-border-radius-px: ;
+      --docsifytabs-margin: 1.5em 0;
+      --docsifytabs-tab-background: #f8f8f8;
+      --docsifytabs-tab-background--active: var(--docsifytabs-content-background);
+      --docsifytabs-tab-color: #999;
+      --docsifytabs-tab-color--active: inherit;
+      --docsifytabs-tab-highlight-px: 3px;
+      --docsifytabs-tab-highlight-color: var(--theme-color, currentColor);
+      --docsifytabs-tab-padding: 0.6em 1em;
+      --docsifytabs-content-background: inherit;
+      --docsifytabs-content-padding: 1.5rem
+    }
+
+    .docsify-tabs:before,
+    .docsify-tabs__tab {
+      z-index: 1
+    }
+
+    .docsify-tabs__tab--active,
+    .docsify-tabs__tab:focus {
+      z-index: 2
+    }
+
+    .docsify-tabs {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      position: relative
+    }
+
+    .docsify-tabs:before {
+      -ms-flex-order: 0;
+      content: "";
+      -ms-flex: 1 1;
+      flex: 1 1;
+      order: 0
+    }
+
+    .docsify-tabs__tab {
+      -ms-flex-order: -1;
+      appearance: none;
+      font-size: inherit;
+      margin: 0;
+      order: -1;
+      position: relative
+    }
+
+    .docsify-tabs__content[class] {
+      height: 0;
+      overflow: hidden;
+      position: absolute;
+      visibility: hidden;
+      width: 100%
+    }
+
+    .docsify-tabs__content[class]>:first-child {
+      margin-top: 0
+    }
+
+    .docsify-tabs__content[class]>:last-child {
+      margin-bottom: 0
+    }
+
+    .docsify-tabs__tab--active+.docsify-tabs__content[class] {
+      height: auto;
+      overflow: auto;
+      position: relative;
+      visibility: visible
+    }
+
+    [class*=docsify-tabs--] {
+      margin: 1.5em 0;
+      margin: var(--docsifytabs-margin)
+    }
+
+    [class*=docsify-tabs--]>.docsify-tabs__tab {
+      background: #f8f8f8;
+      background: var(--docsifytabs-tab-background);
+      color: #999;
+      color: var(--docsifytabs-tab-color);
+      padding: .6em 1em;
+      padding: var(--docsifytabs-tab-padding)
+    }
+
+    [class*=docsify-tabs--]>.docsify-tabs__tab--active {
+      background: inherit;
+      background: var(--docsifytabs-tab-background--active);
+      color: inherit;
+      color: var(--docsifytabs-tab-color--active)
+    }
+
+    [class*=docsify-tabs--]>.docsify-tabs__content {
+      background: inherit;
+      background: var(--docsifytabs-content-background)
+    }
+
+    [class*=docsify-tabs--]>.docsify-tabs__tab--active+.docsify-tabs__content {
+      padding: 1.5rem;
+      padding: var(--docsifytabs-content-padding)
+    }
+
+    .docsify-tabs--classic:before,
+    .docsify-tabs--classic>.docsify-tabs__content,
+    .docsify-tabs--classic>.docsify-tabs__tab {
+      border-color: #ededed;
+      border-color: var(--docsifytabs-border-color);
+      border-style: solid;
+      border-width: 1px;
+      border-width: var(--docsifytabs-border-px)
+    }
+
+    .docsify-tabs--classic:before {
+      border-left-width: 0;
+      border-right-width: 0;
+      border-top-width: 0;
+      margin-right: 1px;
+      margin-right: var(--docsifytabs-border-px)
+    }
+
+    .docsify-tabs--classic>.docsify-tabs__tab:first-of-type {
+      border-top-left-radius: var(--docsifytabs-border-radius-px)
+    }
+
+    .docsify-tabs--classic>.docsify-tabs__tab:last-of-type {
+      border-top-right-radius: var(--docsifytabs-border-radius-px)
+    }
+
+    .docsify-tabs--classic>.docsify-tabs__tab~.docsify-tabs__tab {
+      margin-left: -1px;
+      margin-left: calc(0px - var(--docsifytabs-border-px))
+    }
+
+    .docsify-tabs--classic>.docsify-tabs__tab--active {
+      border-bottom-width: 0;
+      box-shadow: inset 0 3px 0 0 currentColor;
+      box-shadow: inset 0 var(--docsifytabs-tab-highlight-px) 0 0 var(--docsifytabs-tab-highlight-color)
+    }
+
+    .docsify-tabs--classic>.docsify-tabs__content {
+      border-radius: 0;
+      border-radius: 0 var(--docsifytabs-border-radius-px) var(--docsifytabs-border-radius-px) var(--docsifytabs-border-radius-px);
+      border-top: 0;
+      margin-top: -1px;
+      margin-top: calc(0px - var(--docsifytabs-border-px))
+    }
+
+    .docsify-tabs--material>.docsify-tabs__tab {
+      background: transparent;
+      border: 0;
+      margin-bottom: 2px;
+      margin-bottom: calc(var(--docsifytabs-tab-highlight-px) - var(--docsifytabs-border-px))
+    }
+
+    .docsify-tabs--material>.docsify-tabs__tab--active {
+      background: transparent;
+      box-shadow: 0 3px 0 0 currentColor;
+      box-shadow: 0 var(--docsifytabs-tab-highlight-px) 0 0 var(--docsifytabs-tab-highlight-color)
+    }
+
+    .docsify-tabs--material>.docsify-tabs__content {
+      border-color: #ededed;
+      border-color: var(--docsifytabs-border-color);
+      border-style: solid;
+      border-width: 1px 0;
+      border-width: var(--docsifytabs-border-px) 0
+    }
+  </style>
+  <!-- UPDATE: Add description, author, og:site_name, og:title, and og:description text for your course. -->
+  <!-- NOTE: Text presented in ALL_CAPS indicate values you should replace. -->
+  <title>Project</title>
+  <link rel="stylesheet" href="/local-scholarship/static/vue.css">
+  <link rel="stylesheet" href="/local-scholarship/static/style.min.css" title="docsify-darklight-theme" type="text/css">
+  <style type="text/css">
+    .docsify-copy-code-button,
+    .docsify-copy-code-button span {
+      cursor: pointer;
+      transition: all .25s ease
+    }
+
+    .docsify-copy-code-button {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      overflow: visible;
+      padding: .65em .8em;
+      border: 0;
+      border-radius: 0;
+      outline: 0;
+      font-size: 1em;
+      background: grey;
+      background: var(--theme-color, grey);
+      color: #fff;
+      opacity: 0
+    }
+
+    .docsify-copy-code-button span {
+      border-radius: 3px;
+      background: inherit;
+      pointer-events: none
+    }
+
+    .docsify-copy-code-button .error,
+    .docsify-copy-code-button .success {
+      position: absolute;
+      z-index: -100;
+      top: 50%;
+      right: 0;
+      padding: .5em .65em;
+      font-size: .825em;
+      opacity: 0;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%)
+    }
+
+    .docsify-copy-code-button.error .error,
+    .docsify-copy-code-button.success .success {
+      right: 100%;
+      opacity: 1;
+      -webkit-transform: translate(-115%, -50%);
+      transform: translate(-115%, -50%)
+    }
+
+    .docsify-copy-code-button:focus,
+    pre:hover .docsify-copy-code-button {
+      opacity: 1
+    }
+  </style>
+  <style type="text/css">
+    .alert {
+      word-wrap: break-word;
+      display: block;
+      margin-bottom: 1rem !important;
+      padding: .75rem 1.25rem !important;
+      position: relative;
+      word-break: break-word
+    }
+
+    .alert>* {
+      max-width: 100%
+    }
+
+    .alert>:first-child {
+      margin-top: 0
+    }
+
+    .alert>:last-child {
+      margin-bottom: 0
+    }
+
+    .alert:before {
+      content: unset !important
+    }
+
+    .alert+.alert {
+      margin-top: -.25rem !important
+    }
+
+    .alert p {
+      margin-bottom: .5rem;
+      margin-top: .5rem
+    }
+
+    .alert .title {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      font-weight: 600;
+      margin: 0
+    }
+
+    .icon {
+      background-repeat: no-repeat;
+      display: inline-block;
+      height: 16px;
+      margin-right: .5rem;
+      width: 16px
+    }
+
+    .alert.callout {
+      background: var(--background);
+      border: 1px solid #eee;
+      border-left-width: .25rem;
+      border-radius: .25rem
+    }
+
+    .alert.callout.note {
+      border-left-color: #17a2b8 !important
+    }
+
+    .alert.callout.note .title {
+      color: #17a2b8
+    }
+
+    .alert.callout.note .icon-note {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='1em' height='1em' viewBox='0 0 16 16' fill='%2317a2b8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z'/%3E%3C/svg%3E")
+    }
+
+    .alert.callout.tip {
+      border-left-color: #28a745 !important
+    }
+
+    .alert.callout.tip .title {
+      color: #28a745
+    }
+
+    .alert.callout.tip .icon-tip {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='1em' height='1em' viewBox='0 0 352 512' fill='%2328a745' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z'/%3E%3C/svg%3E")
+    }
+
+    .alert.callout.warning {
+      border-left-color: #f0ad4e !important
+    }
+
+    .alert.callout.warning .title {
+      color: #f0ad4e
+    }
+
+    .alert.callout.warning .icon-warning {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='1em' height='1em' viewBox='0 0 17 16' fill='%23f0ad4e' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 5zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z'/%3E%3C/svg%3E")
+    }
+
+    .alert.callout.attention {
+      border-left-color: #dc3545 !important
+    }
+
+    .alert.callout.attention .title {
+      color: #dc3545
+    }
+
+    .alert.callout.attention .icon-attention {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='1em' height='1em' viewBox='0 0 16 16' fill='%23dc3545' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath fill-rule='evenodd' d='M11.354 4.646a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708l6-6a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E")
+    }
+
+    .alert.flat {
+      background-color: #e2e3e5;
+      border: 1px solid #d6d8db;
+      border-radius: .125rem;
+      color: #383d41
+    }
+
+    .alert.flat.note {
+      background-color: #cdeefd;
+      border-color: #b4e6fc;
+      color: #02587f
+    }
+
+    .alert.flat.note .title {
+      color: #01354d
+    }
+
+    .alert.flat.note .icon-note {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='1em' height='1em' viewBox='0 0 16 16' fill='%2301354d' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z'/%3E%3C/svg%3E")
+    }
+
+    .alert.flat.tip {
+      background-color: #dbefdc;
+      border-color: #c9e7cb;
+      color: #285b2a
+    }
+
+    .alert.flat.tip .title {
+      color: #18381a
+    }
+
+    .alert.flat.tip .icon-tip {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='1em' height='1em' viewBox='0 0 352 512' fill='%2318381a' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z'/%3E%3C/svg%3E")
+    }
+
+    .alert.flat.warning {
+      background-color: #ffddd3;
+      border-color: #ffc9ba;
+      color: #852d12
+    }
+
+    .alert.flat.warning .title {
+      color: #581e0c
+    }
+
+    .alert.flat.warning .icon-warning {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='1em' height='1em' viewBox='0 0 17 16' fill='%23581e0c' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 5zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z'/%3E%3C/svg%3E")
+    }
+
+    .alert.flat.attention {
+      background-color: #fdd9d7;
+      border-color: #fcc2bf;
+      color: #7f231c
+    }
+
+    .alert.flat.attention .title {
+      color: #551713
+    }
+
+    .alert.flat.attention .icon-attention {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='1em' height='1em' viewBox='0 0 16 16' fill='%23551713' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath fill-rule='evenodd' d='M11.354 4.646a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708l6-6a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E")
+    }
+  </style>
+  <style>
+    :root {
+      --theme-color: #126893;
+    }
+  </style>
+  <style>
+    .sidebar {
+      padding-top: 0;
+    }
+
+    .search {
+      margin-bottom: 20px;
+      padding: 6px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .search .input-wrap {
+      display: flex;
+      align-items: center;
+    }
+
+    .search .results-panel {
+      display: none;
+    }
+
+    .search .results-panel.show {
+      display: block;
+    }
+
+    .search input {
+      outline: none;
+      border: none;
+      width: 100%;
+      padding: 0.6em 7px;
+      font-size: inherit;
+      border: 1px solid transparent;
+    }
+
+    .search input:focus {
+      box-shadow: 0 0 5px var(--theme-color, #42b983);
+      border: 1px solid var(--theme-color, #42b983);
+    }
+
+    .search input::-webkit-search-decoration,
+    .search input::-webkit-search-cancel-button,
+    .search input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    .search input::-ms-clear {
+      display: none;
+      height: 0;
+      width: 0;
+    }
+
+    .search .clear-button {
+      cursor: pointer;
+      width: 36px;
+      text-align: right;
+      display: none;
+    }
+
+    .search .clear-button.show {
+      display: block;
+    }
+
+    .search .clear-button svg {
+      transform: scale(.5);
+    }
+
+    .search h2 {
+      font-size: 17px;
+      margin: 10px 0;
+    }
+
+    .search a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .search .matching-post {
+      border-bottom: 1px solid #eee;
+    }
+
+    .search .matching-post:last-child {
+      border-bottom: 0;
+    }
+
+    .search p {
+      font-size: 14px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .search p.empty {
+      text-align: center;
+    }
+
+    .app-name.hide,
+    .sidebar-nav.hide {
+      display: none;
+    }
+  </style>
+  <style></style>
+  <style></style>
+  <style></style>
+  <style></style>
+  <style></style>
+  <style></style>
+  <style></style>
+  <style></style>
+  <style></style>
+  <style></style>
+  <style></style>
+  <style></style>
+</head>
+
+<body class="ready sticky ready-fix close" data-page="Assignments/Sample_Project.md">
+  <nav class="app-nav"></nav>
+  <main><button class="sidebar-toggle" aria-label="Menu">
+      <div class="sidebar-toggle-button"><span></span><span></span><span></span></div>
+    </button>
+    <aside class="sidebar">
+      <h1 class="app-name"><a class="app-name-link" data-nosearch="" href="/"><img alt="Syllabus Template"
+            src="/local-scholarship/static/logo-icononly.svg"></a></h1>
+      <div class="sidebar-nav">
+    <ul>
+        <li><strong><a href="/" title="Syllabus">Syllabus</a></strong></li>
+        <li><strong>Lessons</strong>
+            <ul>
+                
+                
+                <li><a href="/local-scholarship/0-kubernetes background/0-kubernetes background.html" title="Kubernetes Background">Kubernetes Background</a></li>
+                
+                
+                <li><a href="/local-scholarship/1-the evolution of kubernetes/1-the evolution of kubernetes.html" title="The Evolution Of Kubernetes">The Evolution Of Kubernetes</a></li>
+                
+                
+                <li><a href="/local-scholarship/2-the operating system of the cloud/2-the operating system of the cloud.html" title="The Operating System Of The Cloud">The Operating System Of The Cloud</a></li>
+                
+                
+                <li><a href="/local-scholarship/3-quiz kubernetes primer/3-quiz kubernetes primer.html" title="Quiz Kubernetes Primer">Quiz Kubernetes Primer</a></li>
+                
+                
+                <li><a href="/local-scholarship/4-summary/4-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/5-kubernetes from 40k feet/5-kubernetes from 40k feet.html" title="Kubernetes From 40k Feet">Kubernetes From 40k Feet</a></li>
+                
+                
+                <li><a href="/local-scholarship/6-masters and nodes masters/6-masters and nodes masters.html" title="Masters And Nodes Masters">Masters And Nodes Masters</a></li>
+                
+                
+                <li><a href="/local-scholarship/7-masters and nodes nodes/7-masters and nodes nodes.html" title="Masters And Nodes Nodes">Masters And Nodes Nodes</a></li>
+                
+                
+                <li><a href="/local-scholarship/8-kubernetes dns/8-kubernetes dns.html" title="Kubernetes Dns">Kubernetes Dns</a></li>
+                
+                
+                <li><a href="/local-scholarship/9-packaging apps for kubernetes/9-packaging apps for kubernetes.html" title="Packaging Apps For Kubernetes">Packaging Apps For Kubernetes</a></li>
+                
+                
+                <li><a href="/local-scholarship/10-quiz kubernetes principles/10-quiz kubernetes principles.html" title="Quiz Kubernetes Principles">Quiz Kubernetes Principles</a></li>
+                
+                
+                <li><a href="/local-scholarship/11-the declarative model and the desired state/11-the declarative model and the desired state.html" title="The Declarative Model And The Desired State">The Declarative Model And The Desired State</a></li>
+                
+                
+                <li><a href="/local-scholarship/12-pods/12-pods.html" title="Pods">Pods</a></li>
+                
+                
+                <li><a href="/local-scholarship/13-deployments/13-deployments.html" title="Deployments">Deployments</a></li>
+                
+                
+                <li><a href="/local-scholarship/14-services and network stable networking/14-services and network stable networking.html" title="Services And Network Stable Networking">Services And Network Stable Networking</a></li>
+                
+                
+                <li><a href="/local-scholarship/15-quiz pods deployments and services/15-quiz pods deployments and services.html" title="Quiz Pods Deployments And Services">Quiz Pods Deployments And Services</a></li>
+                
+                
+                <li><a href="/local-scholarship/16-summary/16-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/17-kubernetes playgrounds/17-kubernetes playgrounds.html" title="Kubernetes Playgrounds">Kubernetes Playgrounds</a></li>
+                
+                
+                <li><a href="/local-scholarship/18-hosted kubernetes/18-hosted kubernetes.html" title="Hosted Kubernetes">Hosted Kubernetes</a></li>
+                
+                
+                <li><a href="/local-scholarship/19-installing kubernetes/19-installing kubernetes.html" title="Installing Kubernetes">Installing Kubernetes</a></li>
+                
+                
+                <li><a href="/local-scholarship/20-play with kubernetes/20-play with kubernetes.html" title="Play With Kubernetes">Play With Kubernetes</a></li>
+                
+                
+                <li><a href="/local-scholarship/21-docker desktop/21-docker desktop.html" title="Docker Desktop">Docker Desktop</a></li>
+                
+                
+                <li><a href="/local-scholarship/22-google kubernetes engine gke/22-google kubernetes engine gke.html" title="Google Kubernetes Engine Gke">Google Kubernetes Engine Gke</a></li>
+                
+                
+                <li><a href="/local-scholarship/23-other methods/23-other methods.html" title="Other Methods">Other Methods</a></li>
+                
+                
+                <li><a href="/local-scholarship/24-kubectl/24-kubectl.html" title="Kubectl">Kubectl</a></li>
+                
+                
+                <li><a href="/local-scholarship/25-quiz installing kubernetes/25-quiz installing kubernetes.html" title="Quiz Installing Kubernetes">Quiz Installing Kubernetes</a></li>
+                
+                
+                <li><a href="/local-scholarship/26-summary/26-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/27-pod theory/27-pod theory.html" title="Pod Theory">Pod Theory</a></li>
+                
+                
+                <li><a href="/local-scholarship/28-multi container pods the typical example/28-multi container pods the typical example.html" title="Multi Container Pods The Typical Example">Multi Container Pods The Typical Example</a></li>
+                
+                
+                <li><a href="/local-scholarship/29-how do we deploy pods/29-how do we deploy pods.html" title="How Do We Deploy Pods">How Do We Deploy Pods</a></li>
+                
+                
+                <li><a href="/local-scholarship/30-pods and shared networking/30-pods and shared networking.html" title="Pods And Shared Networking">Pods And Shared Networking</a></li>
+                
+                
+                <li><a href="/local-scholarship/31-pods and cgroups/31-pods and cgroups.html" title="Pods And Cgroups">Pods And Cgroups</a></li>
+                
+                
+                <li><a href="/local-scholarship/32-pod lifecycle/32-pod lifecycle.html" title="Pod Lifecycle">Pod Lifecycle</a></li>
+                
+                
+                <li><a href="/local-scholarship/33-quiz theory of working with pods/33-quiz theory of working with pods.html" title="Quiz Theory Of Working With Pods">Quiz Theory Of Working With Pods</a></li>
+                
+                
+                <li><a href="/local-scholarship/34-summary/34-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/35-introduction/35-introduction.html" title="Introduction">Introduction</a></li>
+                
+                
+                <li><a href="/local-scholarship/36-pod manifest files/36-pod manifest files.html" title="Pod Manifest Files">Pod Manifest Files</a></li>
+                
+                
+                <li><a href="/local-scholarship/37-manifest files empathy as code/37-manifest files empathy as code.html" title="Manifest Files Empathy As Code">Manifest Files Empathy As Code</a></li>
+                
+                
+                <li><a href="/local-scholarship/38-introspecting running pods/38-introspecting running pods.html" title="Introspecting Running Pods">Introspecting Running Pods</a></li>
+                
+                
+                <li><a href="/local-scholarship/39-kubectl exec running commands in pods/39-kubectl exec running commands in pods.html" title="Kubectl Exec Running Commands In Pods">Kubectl Exec Running Commands In Pods</a></li>
+                
+                
+                <li><a href="/local-scholarship/40-quiz working hands on with pods/40-quiz working hands on with pods.html" title="Quiz Working Hands On With Pods">Quiz Working Hands On With Pods</a></li>
+                
+                
+                <li><a href="/local-scholarship/41-summary/41-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/42-deployment theory/42-deployment theory.html" title="Deployment Theory">Deployment Theory</a></li>
+                
+                
+                <li><a href="/local-scholarship/43-self healing and scalability/43-self healing and scalability.html" title="Self Healing And Scalability">Self Healing And Scalability</a></li>
+                
+                
+                <li><a href="/local-scholarship/44-rolling updates with deployments/44-rolling updates with deployments.html" title="Rolling Updates With Deployments">Rolling Updates With Deployments</a></li>
+                
+                
+                <li><a href="/local-scholarship/45-how to create a deployment/45-how to create a deployment.html" title="How To Create A Deployment">How To Create A Deployment</a></li>
+                
+                
+                <li><a href="/local-scholarship/46-quiz basics of kubernetes deployments/46-quiz basics of kubernetes deployments.html" title="Quiz Basics Of Kubernetes Deployments">Quiz Basics Of Kubernetes Deployments</a></li>
+                
+                
+                <li><a href="/local-scholarship/47-accessing deployments/47-accessing deployments.html" title="Accessing Deployments">Accessing Deployments</a></li>
+                
+                
+                <li><a href="/local-scholarship/48-accessing the apps/48-accessing the apps.html" title="Accessing The Apps">Accessing The Apps</a></li>
+                
+                
+                <li><a href="/local-scholarship/49-performing a rolling update/49-performing a rolling update.html" title="Performing A Rolling Update">Performing A Rolling Update</a></li>
+                
+                
+                <li><a href="/local-scholarship/50-how to perform a rollback/50-how to perform a rollback.html" title="How To Perform A Rollback">How To Perform A Rollback</a></li>
+                
+                
+                <li><a href="/local-scholarship/51-quiz accessing and updating deployments/51-quiz accessing and updating deployments.html" title="Quiz Accessing And Updating Deployments">Quiz Accessing And Updating Deployments</a></li>
+                
+                
+                <li><a href="/local-scholarship/52-summary/52-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/53-introduction/53-introduction.html" title="Introduction">Introduction</a></li>
+                
+                
+                <li><a href="/local-scholarship/54-labels and loose coupling/54-labels and loose coupling.html" title="Labels And Loose Coupling">Labels And Loose Coupling</a></li>
+                
+                
+                <li><a href="/local-scholarship/55-services and endpoints objects/55-services and endpoints objects.html" title="Services And Endpoints Objects">Services And Endpoints Objects</a></li>
+                
+                
+                <li><a href="/local-scholarship/56-accessing services from inside the cluster/56-accessing services from inside the cluster.html" title="Accessing Services From Inside The Cluster">Accessing Services From Inside The Cluster</a></li>
+                
+                
+                <li><a href="/local-scholarship/57-accessing services from outside the cluster/57-accessing services from outside the cluster.html" title="Accessing Services From Outside The Cluster">Accessing Services From Outside The Cluster</a></li>
+                
+                
+                <li><a href="/local-scholarship/58-service discovery/58-service discovery.html" title="Service Discovery">Service Discovery</a></li>
+                
+                
+                <li><a href="/local-scholarship/59-quiz theory of kubernetes services/59-quiz theory of kubernetes services.html" title="Quiz Theory Of Kubernetes Services">Quiz Theory Of Kubernetes Services</a></li>
+                
+                
+                <li><a href="/local-scholarship/60-summary/60-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/61-the imperative way/61-the imperative way.html" title="The Imperative Way">The Imperative Way</a></li>
+                
+                
+                <li><a href="/local-scholarship/62-the declarative way/62-the declarative way.html" title="The Declarative Way">The Declarative Way</a></li>
+                
+                
+                <li><a href="/local-scholarship/63-introspecting services and endpoint objects/63-introspecting services and endpoint objects.html" title="Introspecting Services And Endpoint Objects">Introspecting Services And Endpoint Objects</a></li>
+                
+                
+                <li><a href="/local-scholarship/64-real world example/64-real world example.html" title="Real World Example">Real World Example</a></li>
+                
+                
+                <li><a href="/local-scholarship/65-quiz hands on with kubernetes services/65-quiz hands on with kubernetes services.html" title="Quiz Hands On With Kubernetes Services">Quiz Hands On With Kubernetes Services</a></li>
+                
+                
+                <li><a href="/local-scholarship/66-summary/66-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/67-introduction/67-introduction.html" title="Introduction">Introduction</a></li>
+                
+                
+                <li><a href="/local-scholarship/68-service registration/68-service registration.html" title="Service Registration">Service Registration</a></li>
+                
+                
+                <li><a href="/local-scholarship/69-service discovery/69-service discovery.html" title="Service Discovery">Service Discovery</a></li>
+                
+                
+                <li><a href="/local-scholarship/70-service discovery and namespaces/70-service discovery and namespaces.html" title="Service Discovery And Namespaces">Service Discovery And Namespaces</a></li>
+                
+                
+                <li><a href="/local-scholarship/71-troubleshooting service discovery/71-troubleshooting service discovery.html" title="Troubleshooting Service Discovery">Troubleshooting Service Discovery</a></li>
+                
+                
+                <li><a href="/local-scholarship/72-quiz service discovery/72-quiz service discovery.html" title="Quiz Service Discovery">Quiz Service Discovery</a></li>
+                
+                
+                <li><a href="/local-scholarship/73-summary/73-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/74-the big picture/74-the big picture.html" title="The Big Picture">The Big Picture</a></li>
+                
+                
+                <li><a href="/local-scholarship/75-storage providers and container storage interface/75-storage providers and container storage interface.html" title="Storage Providers And Container Storage Interface">Storage Providers And Container Storage Interface</a></li>
+                
+                
+                <li><a href="/local-scholarship/76-the kubernetes persistent volume subsystem/76-the kubernetes persistent volume subsystem.html" title="The Kubernetes Persistent Volume Subsystem">The Kubernetes Persistent Volume Subsystem</a></li>
+                
+                
+                <li><a href="/local-scholarship/77-persistent volume claim/77-persistent volume claim.html" title="Persistent Volume Claim">Persistent Volume Claim</a></li>
+                
+                
+                <li><a href="/local-scholarship/78-storage classes and dynamic provisioning/78-storage classes and dynamic provisioning.html" title="Storage Classes And Dynamic Provisioning">Storage Classes And Dynamic Provisioning</a></li>
+                
+                
+                <li><a href="/local-scholarship/79-demo/79-demo.html" title="Demo">Demo</a></li>
+                
+                
+                <li><a href="/local-scholarship/80-quiz kubernetes storage/80-quiz kubernetes storage.html" title="Quiz Kubernetes Storage">Quiz Kubernetes Storage</a></li>
+                
+                
+                <li><a href="/local-scholarship/81-summary/81-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/82-introduction/82-introduction.html" title="Introduction">Introduction</a></li>
+                
+                
+                <li><a href="/local-scholarship/83-configmap theory/83-configmap theory.html" title="Configmap Theory">Configmap Theory</a></li>
+                
+                
+                <li><a href="/local-scholarship/84-hands on creating configmaps imperatively/84-hands on creating configmaps imperatively.html" title="Hands On Creating Configmaps Imperatively">Hands On Creating Configmaps Imperatively</a></li>
+                
+                
+                <li><a href="/local-scholarship/85-hands on creating configmaps declaratively/85-hands on creating configmaps declaratively.html" title="Hands On Creating Configmaps Declaratively">Hands On Creating Configmaps Declaratively</a></li>
+                
+                
+                <li><a href="/local-scholarship/86-injecting configmap and secret data into pods and containers/86-injecting configmap and secret data into pods and containers.html" title="Injecting Configmap And Secret Data Into Pods And Containers">Injecting Configmap And Secret Data Into Pods And Containers</a></li>
+                
+                
+                <li><a href="/local-scholarship/87-quiz configmaps/87-quiz configmaps.html" title="Quiz Configmaps">Quiz Configmaps</a></li>
+                
+                
+                <li><a href="/local-scholarship/88-summary/88-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/89-introduction to statefulsets/89-introduction to statefulsets.html" title="Introduction To Statefulsets">Introduction To Statefulsets</a></li>
+                
+                
+                <li><a href="/local-scholarship/90-ordered creation and deletion/90-ordered creation and deletion.html" title="Ordered Creation And Deletion">Ordered Creation And Deletion</a></li>
+                
+                
+                <li><a href="/local-scholarship/91-volumes and handling failures/91-volumes and handling failures.html" title="Volumes And Handling Failures">Volumes And Handling Failures</a></li>
+                
+                
+                <li><a href="/local-scholarship/92-network and headless services/92-network and headless services.html" title="Network And Headless Services">Network And Headless Services</a></li>
+                
+                
+                <li><a href="/local-scholarship/93-hands on with statefulsets/93-hands on with statefulsets.html" title="Hands On With Statefulsets">Hands On With Statefulsets</a></li>
+                
+                
+                <li><a href="/local-scholarship/94-creating a governing headless service/94-creating a governing headless service.html" title="Creating A Governing Headless Service">Creating A Governing Headless Service</a></li>
+                
+                
+                <li><a href="/local-scholarship/95-deploy the statefulset/95-deploy the statefulset.html" title="Deploy The Statefulset">Deploy The Statefulset</a></li>
+                
+                
+                <li><a href="/local-scholarship/96-testing peer discovery/96-testing peer discovery.html" title="Testing Peer Discovery">Testing Peer Discovery</a></li>
+                
+                
+                <li><a href="/local-scholarship/97-scaling statefulsets/97-scaling statefulsets.html" title="Scaling Statefulsets">Scaling Statefulsets</a></li>
+                
+                
+                <li><a href="/local-scholarship/98-test a pod failure/98-test a pod failure.html" title="Test A Pod Failure">Test A Pod Failure</a></li>
+                
+                
+                <li><a href="/local-scholarship/99-quiz statefulsets/99-quiz statefulsets.html" title="Quiz Statefulsets">Quiz Statefulsets</a></li>
+                
+                
+                <li><a href="/local-scholarship/100-summary/100-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/101-introduction/101-introduction.html" title="Introduction">Introduction</a></li>
+                
+                
+                <li><a href="/local-scholarship/102-spoofing/102-spoofing.html" title="Spoofing">Spoofing</a></li>
+                
+                
+                <li><a href="/local-scholarship/103-tampering/103-tampering.html" title="Tampering">Tampering</a></li>
+                
+                
+                <li><a href="/local-scholarship/104-repudiation/104-repudiation.html" title="Repudiation">Repudiation</a></li>
+                
+                
+                <li><a href="/local-scholarship/105-information disclosure/105-information disclosure.html" title="Information Disclosure">Information Disclosure</a></li>
+                
+                
+                <li><a href="/local-scholarship/106-denial of service/106-denial of service.html" title="Denial Of Service">Denial Of Service</a></li>
+                
+                
+                <li><a href="/local-scholarship/107-elevation of privilege/107-elevation of privilege.html" title="Elevation Of Privilege">Elevation Of Privilege</a></li>
+                
+                
+                <li><a href="/local-scholarship/108-protecting pods/108-protecting pods.html" title="Protecting Pods">Protecting Pods</a></li>
+                
+                
+                <li><a href="/local-scholarship/109-pod security policies/109-pod security policies.html" title="Pod Security Policies">Pod Security Policies</a></li>
+                
+                
+                <li><a href="/local-scholarship/110-quiz threat modeling kubernetes/110-quiz threat modeling kubernetes.html" title="Quiz Threat Modeling Kubernetes">Quiz Threat Modeling Kubernetes</a></li>
+                
+                
+                <li><a href="/local-scholarship/111-summary/111-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/112-ci cd pipeline/112-ci cd pipeline.html" title="Ci Cd Pipeline">Ci Cd Pipeline</a></li>
+                
+                
+                <li><a href="/local-scholarship/113-moving images from non production to production/113-moving images from non production to production.html" title="Moving Images From Non Production To Production">Moving Images From Non Production To Production</a></li>
+                
+                
+                <li><a href="/local-scholarship/114-infrastructure and networking/114-infrastructure and networking.html" title="Infrastructure And Networking">Infrastructure And Networking</a></li>
+                
+                
+                <li><a href="/local-scholarship/115-identity and access management ims/115-identity and access management ims.html" title="Identity And Access Management Ims">Identity And Access Management Ims</a></li>
+                
+                
+                <li><a href="/local-scholarship/116-auditing and security monitoring/116-auditing and security monitoring.html" title="Auditing And Security Monitoring">Auditing And Security Monitoring</a></li>
+                
+                
+                <li><a href="/local-scholarship/117-real world example/117-real world example.html" title="Real World Example">Real World Example</a></li>
+                
+                
+                <li><a href="/local-scholarship/118-quiz real world kubernetes security/118-quiz real world kubernetes security.html" title="Quiz Real World Kubernetes Security">Quiz Real World Kubernetes Security</a></li>
+                
+                
+                <li><a href="/local-scholarship/119-summary/119-summary.html" title="Summary">Summary</a></li>
+                
+                
+                <li><a href="/local-scholarship/120-what s next/120-what s next.html" title="What S Next">What S Next</a></li>
+                
+                
+                <li><a href="/local-scholarship/121-feedback/121-feedback.html" title="Feedback">Feedback</a></li>
+                
+                
+                <li><a href="/local-scholarship/122-about the authors/122-about the authors.html" title="About The Authors">About The Authors</a></li>
+                
+                
+                <li><a href="/local-scholarship/123-glossary/123-glossary.html" title="Glossary">Glossary</a></li>
+                
+                
+                <li><a href="/local-scholarship/124-service meshes/124-service meshes.html" title="Service Meshes">Service Meshes</a></li>
+                
+                
+                <li><a href="/local-scholarship/125-daemonsets/125-daemonsets.html" title="Daemonsets">Daemonsets</a></li>
+                
+                
+                <li><a href="/local-scholarship/126-statefulsets/126-statefulsets.html" title="Statefulsets">Statefulsets</a></li>
+                
+                
+                <li><a href="/local-scholarship/127-jobs and cronjobs/127-jobs and cronjobs.html" title="Jobs And Cronjobs">Jobs And Cronjobs</a></li>
+                
+                
+                <li><a href="/local-scholarship/128-autoscaling/128-autoscaling.html" title="Autoscaling">Autoscaling</a></li>
+                
+                
+                <li><a href="/local-scholarship/129-role based access control rbac/129-role based access control rbac.html" title="Role Based Access Control Rbac">Role Based Access Control Rbac</a></li>
+                
+                
+                <li><a href="/local-scholarship/130-helm/130-helm.html" title="Helm">Helm</a></li>
+                
+                
+                <li><a href="/local-scholarship/131-summary/131-summary.html" title="Summary">Summary</a></li>
+                
+            </ul>
+        </li>
+    </ul>
+</div>
+    </aside>
+    <section class="content" style="overflow-y: auto;">
+      <article class="markdown-section" id="main">
+        <h1 id="class-assignment-title"><a href="/Assignments/Sample_Project?id=class-assignment-title"
+            data-id="class-assignment-title" class="anchor"><span>Learn Kubernetes: A Deep Dive - Learn Interactively</span></a></h1>
+        <h2 id="description"><span>Course Overview</span></a></h2>
+        <p>Kubernetes helps deploy and manage containerized applications at scale. It abstracts the underlying infrastructure so it doesn’t matter if you're deploying your applications to Amazon Web Services, Microsoft Azure, or your own on-premises datacenter. Ready to get started?
+
+In this course, you will cover the most essential Kubernetes concepts that you’ll need to know to be proficient, including pods, services, and deployments. Beyond that though, you will learn about the Kubernetes architecture, how to build clusters, and how to deploy and manage applications. 
+
+In the last part of the course, you will dive into threat modeling and real-world security practices. By the end of this course, you will have a great new skill for your resume and you’ll be able to start using Kubernetes in your own projects.</p>
+      </article>
+      <article class="markdown-section" id="main">
+        <h2 id="description"><span>Course Content</span></a></h2>
+        <div class="table-wrapper">
+          <table id="_eiwfoklkm">
+            <thead>
+              <tr>
+                <th align="center">#</th>
+                <th align="center">Lesson</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+              <tr>
+                <td align="center">0</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/0-kubernetes background/0-kubernetes background.html"
+                      title="Kubernetes Background">Kubernetes Background</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">1</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/1-the evolution of kubernetes/1-the evolution of kubernetes.html"
+                      title="The Evolution Of Kubernetes">The Evolution Of Kubernetes</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">2</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/2-the operating system of the cloud/2-the operating system of the cloud.html"
+                      title="The Operating System Of The Cloud">The Operating System Of The Cloud</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">3</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/3-quiz kubernetes primer/3-quiz kubernetes primer.html"
+                      title="Quiz Kubernetes Primer">Quiz Kubernetes Primer</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">4</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/4-summary/4-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">5</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/5-kubernetes from 40k feet/5-kubernetes from 40k feet.html"
+                      title="Kubernetes From 40k Feet">Kubernetes From 40k Feet</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">6</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/6-masters and nodes masters/6-masters and nodes masters.html"
+                      title="Masters And Nodes Masters">Masters And Nodes Masters</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">7</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/7-masters and nodes nodes/7-masters and nodes nodes.html"
+                      title="Masters And Nodes Nodes">Masters And Nodes Nodes</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">8</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/8-kubernetes dns/8-kubernetes dns.html"
+                      title="Kubernetes Dns">Kubernetes Dns</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">9</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/9-packaging apps for kubernetes/9-packaging apps for kubernetes.html"
+                      title="Packaging Apps For Kubernetes">Packaging Apps For Kubernetes</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">10</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/10-quiz kubernetes principles/10-quiz kubernetes principles.html"
+                      title="Quiz Kubernetes Principles">Quiz Kubernetes Principles</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">11</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/11-the declarative model and the desired state/11-the declarative model and the desired state.html"
+                      title="The Declarative Model And The Desired State">The Declarative Model And The Desired State</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">12</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/12-pods/12-pods.html"
+                      title="Pods">Pods</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">13</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/13-deployments/13-deployments.html"
+                      title="Deployments">Deployments</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">14</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/14-services and network stable networking/14-services and network stable networking.html"
+                      title="Services And Network Stable Networking">Services And Network Stable Networking</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">15</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/15-quiz pods deployments and services/15-quiz pods deployments and services.html"
+                      title="Quiz Pods Deployments And Services">Quiz Pods Deployments And Services</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">16</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/16-summary/16-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">17</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/17-kubernetes playgrounds/17-kubernetes playgrounds.html"
+                      title="Kubernetes Playgrounds">Kubernetes Playgrounds</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">18</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/18-hosted kubernetes/18-hosted kubernetes.html"
+                      title="Hosted Kubernetes">Hosted Kubernetes</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">19</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/19-installing kubernetes/19-installing kubernetes.html"
+                      title="Installing Kubernetes">Installing Kubernetes</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">20</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/20-play with kubernetes/20-play with kubernetes.html"
+                      title="Play With Kubernetes">Play With Kubernetes</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">21</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/21-docker desktop/21-docker desktop.html"
+                      title="Docker Desktop">Docker Desktop</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">22</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/22-google kubernetes engine gke/22-google kubernetes engine gke.html"
+                      title="Google Kubernetes Engine Gke">Google Kubernetes Engine Gke</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">23</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/23-other methods/23-other methods.html"
+                      title="Other Methods">Other Methods</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">24</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/24-kubectl/24-kubectl.html"
+                      title="Kubectl">Kubectl</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">25</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/25-quiz installing kubernetes/25-quiz installing kubernetes.html"
+                      title="Quiz Installing Kubernetes">Quiz Installing Kubernetes</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">26</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/26-summary/26-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">27</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/27-pod theory/27-pod theory.html"
+                      title="Pod Theory">Pod Theory</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">28</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/28-multi container pods the typical example/28-multi container pods the typical example.html"
+                      title="Multi Container Pods The Typical Example">Multi Container Pods The Typical Example</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">29</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/29-how do we deploy pods/29-how do we deploy pods.html"
+                      title="How Do We Deploy Pods">How Do We Deploy Pods</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">30</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/30-pods and shared networking/30-pods and shared networking.html"
+                      title="Pods And Shared Networking">Pods And Shared Networking</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">31</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/31-pods and cgroups/31-pods and cgroups.html"
+                      title="Pods And Cgroups">Pods And Cgroups</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">32</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/32-pod lifecycle/32-pod lifecycle.html"
+                      title="Pod Lifecycle">Pod Lifecycle</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">33</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/33-quiz theory of working with pods/33-quiz theory of working with pods.html"
+                      title="Quiz Theory Of Working With Pods">Quiz Theory Of Working With Pods</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">34</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/34-summary/34-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">35</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/35-introduction/35-introduction.html"
+                      title="Introduction">Introduction</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">36</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/36-pod manifest files/36-pod manifest files.html"
+                      title="Pod Manifest Files">Pod Manifest Files</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">37</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/37-manifest files empathy as code/37-manifest files empathy as code.html"
+                      title="Manifest Files Empathy As Code">Manifest Files Empathy As Code</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">38</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/38-introspecting running pods/38-introspecting running pods.html"
+                      title="Introspecting Running Pods">Introspecting Running Pods</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">39</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/39-kubectl exec running commands in pods/39-kubectl exec running commands in pods.html"
+                      title="Kubectl Exec Running Commands In Pods">Kubectl Exec Running Commands In Pods</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">40</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/40-quiz working hands on with pods/40-quiz working hands on with pods.html"
+                      title="Quiz Working Hands On With Pods">Quiz Working Hands On With Pods</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">41</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/41-summary/41-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">42</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/42-deployment theory/42-deployment theory.html"
+                      title="Deployment Theory">Deployment Theory</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">43</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/43-self healing and scalability/43-self healing and scalability.html"
+                      title="Self Healing And Scalability">Self Healing And Scalability</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">44</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/44-rolling updates with deployments/44-rolling updates with deployments.html"
+                      title="Rolling Updates With Deployments">Rolling Updates With Deployments</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">45</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/45-how to create a deployment/45-how to create a deployment.html"
+                      title="How To Create A Deployment">How To Create A Deployment</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">46</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/46-quiz basics of kubernetes deployments/46-quiz basics of kubernetes deployments.html"
+                      title="Quiz Basics Of Kubernetes Deployments">Quiz Basics Of Kubernetes Deployments</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">47</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/47-accessing deployments/47-accessing deployments.html"
+                      title="Accessing Deployments">Accessing Deployments</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">48</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/48-accessing the apps/48-accessing the apps.html"
+                      title="Accessing The Apps">Accessing The Apps</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">49</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/49-performing a rolling update/49-performing a rolling update.html"
+                      title="Performing A Rolling Update">Performing A Rolling Update</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">50</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/50-how to perform a rollback/50-how to perform a rollback.html"
+                      title="How To Perform A Rollback">How To Perform A Rollback</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">51</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/51-quiz accessing and updating deployments/51-quiz accessing and updating deployments.html"
+                      title="Quiz Accessing And Updating Deployments">Quiz Accessing And Updating Deployments</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">52</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/52-summary/52-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">53</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/53-introduction/53-introduction.html"
+                      title="Introduction">Introduction</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">54</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/54-labels and loose coupling/54-labels and loose coupling.html"
+                      title="Labels And Loose Coupling">Labels And Loose Coupling</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">55</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/55-services and endpoints objects/55-services and endpoints objects.html"
+                      title="Services And Endpoints Objects">Services And Endpoints Objects</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">56</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/56-accessing services from inside the cluster/56-accessing services from inside the cluster.html"
+                      title="Accessing Services From Inside The Cluster">Accessing Services From Inside The Cluster</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">57</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/57-accessing services from outside the cluster/57-accessing services from outside the cluster.html"
+                      title="Accessing Services From Outside The Cluster">Accessing Services From Outside The Cluster</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">58</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/58-service discovery/58-service discovery.html"
+                      title="Service Discovery">Service Discovery</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">59</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/59-quiz theory of kubernetes services/59-quiz theory of kubernetes services.html"
+                      title="Quiz Theory Of Kubernetes Services">Quiz Theory Of Kubernetes Services</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">60</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/60-summary/60-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">61</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/61-the imperative way/61-the imperative way.html"
+                      title="The Imperative Way">The Imperative Way</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">62</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/62-the declarative way/62-the declarative way.html"
+                      title="The Declarative Way">The Declarative Way</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">63</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/63-introspecting services and endpoint objects/63-introspecting services and endpoint objects.html"
+                      title="Introspecting Services And Endpoint Objects">Introspecting Services And Endpoint Objects</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">64</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/64-real world example/64-real world example.html"
+                      title="Real World Example">Real World Example</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">65</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/65-quiz hands on with kubernetes services/65-quiz hands on with kubernetes services.html"
+                      title="Quiz Hands On With Kubernetes Services">Quiz Hands On With Kubernetes Services</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">66</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/66-summary/66-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">67</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/67-introduction/67-introduction.html"
+                      title="Introduction">Introduction</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">68</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/68-service registration/68-service registration.html"
+                      title="Service Registration">Service Registration</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">69</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/69-service discovery/69-service discovery.html"
+                      title="Service Discovery">Service Discovery</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">70</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/70-service discovery and namespaces/70-service discovery and namespaces.html"
+                      title="Service Discovery And Namespaces">Service Discovery And Namespaces</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">71</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/71-troubleshooting service discovery/71-troubleshooting service discovery.html"
+                      title="Troubleshooting Service Discovery">Troubleshooting Service Discovery</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">72</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/72-quiz service discovery/72-quiz service discovery.html"
+                      title="Quiz Service Discovery">Quiz Service Discovery</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">73</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/73-summary/73-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">74</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/74-the big picture/74-the big picture.html"
+                      title="The Big Picture">The Big Picture</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">75</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/75-storage providers and container storage interface/75-storage providers and container storage interface.html"
+                      title="Storage Providers And Container Storage Interface">Storage Providers And Container Storage Interface</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">76</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/76-the kubernetes persistent volume subsystem/76-the kubernetes persistent volume subsystem.html"
+                      title="The Kubernetes Persistent Volume Subsystem">The Kubernetes Persistent Volume Subsystem</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">77</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/77-persistent volume claim/77-persistent volume claim.html"
+                      title="Persistent Volume Claim">Persistent Volume Claim</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">78</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/78-storage classes and dynamic provisioning/78-storage classes and dynamic provisioning.html"
+                      title="Storage Classes And Dynamic Provisioning">Storage Classes And Dynamic Provisioning</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">79</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/79-demo/79-demo.html"
+                      title="Demo">Demo</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">80</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/80-quiz kubernetes storage/80-quiz kubernetes storage.html"
+                      title="Quiz Kubernetes Storage">Quiz Kubernetes Storage</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">81</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/81-summary/81-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">82</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/82-introduction/82-introduction.html"
+                      title="Introduction">Introduction</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">83</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/83-configmap theory/83-configmap theory.html"
+                      title="Configmap Theory">Configmap Theory</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">84</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/84-hands on creating configmaps imperatively/84-hands on creating configmaps imperatively.html"
+                      title="Hands On Creating Configmaps Imperatively">Hands On Creating Configmaps Imperatively</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">85</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/85-hands on creating configmaps declaratively/85-hands on creating configmaps declaratively.html"
+                      title="Hands On Creating Configmaps Declaratively">Hands On Creating Configmaps Declaratively</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">86</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/86-injecting configmap and secret data into pods and containers/86-injecting configmap and secret data into pods and containers.html"
+                      title="Injecting Configmap And Secret Data Into Pods And Containers">Injecting Configmap And Secret Data Into Pods And Containers</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">87</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/87-quiz configmaps/87-quiz configmaps.html"
+                      title="Quiz Configmaps">Quiz Configmaps</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">88</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/88-summary/88-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">89</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/89-introduction to statefulsets/89-introduction to statefulsets.html"
+                      title="Introduction To Statefulsets">Introduction To Statefulsets</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">90</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/90-ordered creation and deletion/90-ordered creation and deletion.html"
+                      title="Ordered Creation And Deletion">Ordered Creation And Deletion</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">91</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/91-volumes and handling failures/91-volumes and handling failures.html"
+                      title="Volumes And Handling Failures">Volumes And Handling Failures</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">92</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/92-network and headless services/92-network and headless services.html"
+                      title="Network And Headless Services">Network And Headless Services</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">93</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/93-hands on with statefulsets/93-hands on with statefulsets.html"
+                      title="Hands On With Statefulsets">Hands On With Statefulsets</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">94</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/94-creating a governing headless service/94-creating a governing headless service.html"
+                      title="Creating A Governing Headless Service">Creating A Governing Headless Service</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">95</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/95-deploy the statefulset/95-deploy the statefulset.html"
+                      title="Deploy The Statefulset">Deploy The Statefulset</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">96</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/96-testing peer discovery/96-testing peer discovery.html"
+                      title="Testing Peer Discovery">Testing Peer Discovery</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">97</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/97-scaling statefulsets/97-scaling statefulsets.html"
+                      title="Scaling Statefulsets">Scaling Statefulsets</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">98</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/98-test a pod failure/98-test a pod failure.html"
+                      title="Test A Pod Failure">Test A Pod Failure</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">99</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/99-quiz statefulsets/99-quiz statefulsets.html"
+                      title="Quiz Statefulsets">Quiz Statefulsets</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">100</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/100-summary/100-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">101</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/101-introduction/101-introduction.html"
+                      title="Introduction">Introduction</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">102</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/102-spoofing/102-spoofing.html"
+                      title="Spoofing">Spoofing</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">103</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/103-tampering/103-tampering.html"
+                      title="Tampering">Tampering</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">104</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/104-repudiation/104-repudiation.html"
+                      title="Repudiation">Repudiation</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">105</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/105-information disclosure/105-information disclosure.html"
+                      title="Information Disclosure">Information Disclosure</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">106</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/106-denial of service/106-denial of service.html"
+                      title="Denial Of Service">Denial Of Service</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">107</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/107-elevation of privilege/107-elevation of privilege.html"
+                      title="Elevation Of Privilege">Elevation Of Privilege</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">108</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/108-protecting pods/108-protecting pods.html"
+                      title="Protecting Pods">Protecting Pods</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">109</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/109-pod security policies/109-pod security policies.html"
+                      title="Pod Security Policies">Pod Security Policies</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">110</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/110-quiz threat modeling kubernetes/110-quiz threat modeling kubernetes.html"
+                      title="Quiz Threat Modeling Kubernetes">Quiz Threat Modeling Kubernetes</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">111</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/111-summary/111-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">112</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/112-ci cd pipeline/112-ci cd pipeline.html"
+                      title="Ci Cd Pipeline">Ci Cd Pipeline</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">113</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/113-moving images from non production to production/113-moving images from non production to production.html"
+                      title="Moving Images From Non Production To Production">Moving Images From Non Production To Production</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">114</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/114-infrastructure and networking/114-infrastructure and networking.html"
+                      title="Infrastructure And Networking">Infrastructure And Networking</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">115</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/115-identity and access management ims/115-identity and access management ims.html"
+                      title="Identity And Access Management Ims">Identity And Access Management Ims</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">116</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/116-auditing and security monitoring/116-auditing and security monitoring.html"
+                      title="Auditing And Security Monitoring">Auditing And Security Monitoring</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">117</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/117-real world example/117-real world example.html"
+                      title="Real World Example">Real World Example</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">118</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/118-quiz real world kubernetes security/118-quiz real world kubernetes security.html"
+                      title="Quiz Real World Kubernetes Security">Quiz Real World Kubernetes Security</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">119</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/119-summary/119-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">120</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/120-what s next/120-what s next.html"
+                      title="What S Next">What S Next</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">121</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/121-feedback/121-feedback.html"
+                      title="Feedback">Feedback</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">122</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/122-about the authors/122-about the authors.html"
+                      title="About The Authors">About The Authors</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">123</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/123-glossary/123-glossary.html"
+                      title="Glossary">Glossary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">124</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/124-service meshes/124-service meshes.html"
+                      title="Service Meshes">Service Meshes</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">125</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/125-daemonsets/125-daemonsets.html"
+                      title="Daemonsets">Daemonsets</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">126</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/126-statefulsets/126-statefulsets.html"
+                      title="Statefulsets">Statefulsets</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">127</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/127-jobs and cronjobs/127-jobs and cronjobs.html"
+                      title="Jobs And Cronjobs">Jobs And Cronjobs</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">128</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/128-autoscaling/128-autoscaling.html"
+                      title="Autoscaling">Autoscaling</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">129</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/129-role based access control rbac/129-role based access control rbac.html"
+                      title="Role Based Access Control Rbac">Role Based Access Control Rbac</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">130</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/130-helm/130-helm.html"
+                      title="Helm">Helm</a>
+                  </strong>
+                </td>
+              </tr>
+              
+              
+              <tr>
+                <td align="center">131</td>
+                <td align="center">
+                  <strong>
+                    <a href="/local-scholarship/131-summary/131-summary.html"
+                      title="Summary">Summary</a>
+                  </strong>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+  <!-- UPDATE: Make sure to update NAME, REPO, and NAMESPACE below-->
+  <script>
+
+  </script>
+  <script src="/local-scholarship/static/docsify.min.js"></script>
+  <script src="/local-scholarship/static/index.js"></script>
+  <script src="/local-scholarship/static/emoji.min.js"></script>
+  <script src="/local-scholarship/static/external-script.min.js"></script>
+  <script src="/local-scholarship/static/docsify-copy-code@2"></script>
+  <script src="/local-scholarship/static/docsify-tabs@1"></script>
+  <script src="/local-scholarship/static/docsify-plugin-flexible-alerts"></script>
+  <script src="/local-scholarship/static/prism-bash.min.js"></script>
+  <script src="/local-scholarship/static/prism-handlebars.min.js"></script>
+  <script src="/local-scholarship/static/prism-javascript.min.js"></script>
+  <script src="/local-scholarship/static/prism-json.min.js"></script>
+  <script src="/local-scholarship/static/prism-markdown.min.js"></script>
+  <script src="/local-scholarship/static/index.min.js" type="text/javascript">
+  </script>
+</body>
+
+</html>

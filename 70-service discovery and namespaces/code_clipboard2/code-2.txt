@@ -1,0 +1,15 @@
+$ kubectl get all -n dev
+NAME          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+service/ent   ClusterIP   192.168.202.57   <none>        8080/TCP   43s
+
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/enterprise   2/2     2            2           43s
+<snip>
+
+$ kubectl get all -n prod
+NAME          TYPE        CLUSTER-IP        EXTERNAL-IP   PORT(S)    AGE
+service/ent   ClusterIP   192.168.203.158   <none>        8080/TCP   82s
+
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/enterprise   2/2     2            2           52s
+<snip>

@@ -1,0 +1,4 @@
+$ cat /etc/resolv.conf
+search dev.svc.cluster.local svc.cluster.local cluster.local default.svc.cluster.local 
+nameserver 192.168.200.10
+options ndots:5

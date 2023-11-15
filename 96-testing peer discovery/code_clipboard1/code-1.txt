@@ -1,0 +1,2 @@
+$ kubectl apply -f jump-pod.yml
+pod/jump-pod created

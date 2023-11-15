@@ -1,0 +1,2 @@
+exit
+$ kubectl delete -f pod.yml

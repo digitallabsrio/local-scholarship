@@ -1,0 +1,2 @@
+$ kubectl delete sts tkb-sts
+statefulset.apps "tkb-sts" deleted

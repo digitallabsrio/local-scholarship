@@ -1,0 +1,2 @@
+$ kubectl delete -f deploy.yml
+$ kubectl delete -f svc.yml

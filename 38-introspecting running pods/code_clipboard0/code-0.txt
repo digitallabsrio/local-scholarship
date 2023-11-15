@@ -1,0 +1,1 @@
+$ kubectl get pods hello-pod -o yaml

@@ -1,0 +1,2 @@
+$ kubectl describe pod tkb-sts-0 | grep ClaimName
+    ClaimName:  webroot-tkb-sts-0

@@ -1,0 +1,14 @@
+Name:         hello-deploy
+Namespace:    default
+Selector:     app=hello-world
+Replicas:               10 desired | 10 updated | 10 total ...
+StrategyType:           RollingUpdate
+MinReadySeconds:        10
+RollingUpdateStrategy:  1 max unavailable, 1 max surge
+Pod Template:
+  Labels:               app=hello-world
+  Containers:
+        hello-pod:
+          Image:        nigelpoulton/k8sbook:latest
+          Port:         8080/TCP
+<SNIP>

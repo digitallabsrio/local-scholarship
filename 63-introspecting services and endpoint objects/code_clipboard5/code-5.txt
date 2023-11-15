@@ -1,0 +1,2 @@
+NAME        ENDPOINTS                                        AGE
+hello-svc   100.96.1.10:8080, 100.96.1.11:8080 + 8 more...   1m

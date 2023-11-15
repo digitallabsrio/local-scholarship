@@ -1,0 +1,11 @@
+$ kubectl delete pod tkb-sts-0
+pod "tkb-sts-0" deleted
+
+$ kubectl get pods --watch
+NAME        READY   STATUS              RESTARTS   AGE
+tkb-sts-1   1/1     Running             0          43m
+tkb-sts-2   1/1     Running             0          24m
+tkb-sts-0   0/1     Terminating         0          43m
+tkb-sts-0   0/1     Pending             0          0s
+tkb-sts-0   0/1     ContainerCreating   0          0s
+tkb-sts-0   1/1     Running             0          34s

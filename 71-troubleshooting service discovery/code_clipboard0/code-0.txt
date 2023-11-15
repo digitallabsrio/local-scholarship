@@ -1,0 +1,8 @@
+$ kubectl get deploy -n kube-system -l k8s-app=kube-dns
+NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+coredns   2/2     2            2           2d21h
+
+$ kubectl get pods -n kube-system -l k8s-app=kube-dns
+NAME                       READY   STATUS    RESTARTS   AGE
+coredns-5644d7b6d9-74pv7   1/1     Running   0          2d21h
+coredns-5644d7b6d9-s759f   1/1     Running   0          2d21h

@@ -1,0 +1,2 @@
+$ kubectl apply -f sts.yml
+statefulset.apps/tkb-sts configured

@@ -1,0 +1,5 @@
+$ kubectl get pods
+NAME        READY   STATUS   AGE
+tkb-sts-0   1/1     Running  37m
+tkb-sts-1   1/1     Running  37m
+tkb-sts-2   1/1     Running  18m

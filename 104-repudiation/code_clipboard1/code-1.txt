@@ -1,0 +1,3 @@
+type=SYSCALL msg=audit(1234567890.123:12345): arch=abc123 syscall=59 success=yes exit=0 a0=12345678abc a1=0 a2=abc12345678 a3=a items=1 ppid=1234 pid=1234 auid=0 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=1 comm="docker" exe="/var/lib/docker" subj=system_u:object_r:container_runtime_exec_t:s0 key="audit-docker"
+type=CWD msg=audit(1234567890.123:12345):  cwd="/home/firstname"
+type=PATH msg=audit(1234567890.123:12345): item=0 name="/var/lib/docker" inode=123456 dev=fd:00 mode=0100600 ouid=0 ogid=0 rdev=00:00 obj=system_u:object_r:container_runtime_exec_t:s0

@@ -1,0 +1,18 @@
+Name:         test-conf
+Namespace:    default
+Labels:       <none>
+Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                {"apiVersion":"v1","data":{"test.config":"env = 
+                plex-test\nendpoint = 0.0.0.0:31001\nchar = utf8
+                \nvault = PLEX/test\nlog-size = 512M\n"},"..."
+Data
+====
+test.config:
+----
+env = plex-test
+endpoint = 0.0.0.0:31001
+char = utf8
+vault = PLEX/test
+log-size = 512M
+
+Events:  <none>

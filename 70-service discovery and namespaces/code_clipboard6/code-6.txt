@@ -1,0 +1,3 @@
+$ curl ent:8080
+Hello from the DEV Namespace!
+Hostname: enterprise-7d49557d8d-k4jjz

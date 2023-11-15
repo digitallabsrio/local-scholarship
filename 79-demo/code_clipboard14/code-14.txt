@@ -1,0 +1,8 @@
+$ kubectl delete pod class-pod
+pod "class-pod" deleted
+
+$ kubectl delete pvc pv-ticket
+persistentvolumeclaim "pv-ticket" deleted
+
+$ kubectl delete sc slow
+storageclass.storage.k8s.io "slow" deleted

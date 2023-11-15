@@ -1,0 +1,3 @@
+$ curl ent.prod.svc.cluster.local:8080
+Hello from the PROD Namespace!
+Hostname: enterprise-5464d8c4f9-v7xsk

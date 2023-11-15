@@ -1,0 +1,3 @@
+NAME      STATUS    ROLES    AGE       VERSION
+node1     Ready     master   5m        v1.18.4
+node2     Ready     <none>   1m        v1.18.4

@@ -1,0 +1,4 @@
+Pod Name     |    PVC Name 
+tkb-sts-0   <->   webroot-tkb-sts-0
+tkb-sts-0   <->   webroot-tkb-sts-1
+tkb-sts-0   <->   webroot-tkb-sts-2

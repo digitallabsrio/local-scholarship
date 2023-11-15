@@ -1,0 +1,2 @@
+$ kubectl apply -f gcp-sc.yml
+storageclass.storage.k8s.io/flash created

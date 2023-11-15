@@ -1,0 +1,2 @@
+$ kubectl describe pvc webroot-tkb-sts-2 | grep Mounted
+Mounted By:    tkb-sts-2

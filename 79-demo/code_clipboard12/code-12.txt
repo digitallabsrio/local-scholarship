@@ -1,0 +1,2 @@
+NAME         CAPACITY  Mode  STATUS  CLAIM       STORAGECLASS
+pvc-881...   25Gi      RWO   Bound   pv-ticket   slow

@@ -1,0 +1,28 @@
+Name:         hello-pod
+Namespace:    default
+Node:         k8s-slave-lgpkjg/10.48.0.35
+Start Time:   Tue, 19 Nov 2019 16:24:24 +0100
+Labels:       version=v1
+              zone=prod
+Status:       Running
+IP:           10.1.0.21
+Containers:
+  hello-ctr:
+    Image:          nigelpoulton/k8sbook:latest
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+...
+Events:
+  Type    Reason     Age   Message
+  ----    ------     ----  -------
+  Normal  Scheduled  2m   Successfully assigned...
+  Normal  Pulling    2m   pulling image "nigelpoulton/k8sbook:latest"
+  Normal  Pulled     2m   Successfully pulled image
+  Normal  Created    2m   Created container
+  Normal  Started    2m   Started container

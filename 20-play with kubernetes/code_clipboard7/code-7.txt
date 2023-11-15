@@ -1,0 +1,2 @@
+NAME      STATUS     ROLES   AGE       VERSION
+node1     NotReady   master  1m        v1.18.4

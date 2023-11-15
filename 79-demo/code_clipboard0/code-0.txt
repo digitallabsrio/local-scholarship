@@ -1,0 +1,8 @@
+$ kubectl delete pods volpod
+pod "volpod" deleted
+
+$ kubectl delete pvc pvc1
+persistentvolumeclaim "pvc1" deleted
+
+$ kubectl delete pv pv1
+persistentvolume "pv1" deleted

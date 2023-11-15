@@ -1,0 +1,4 @@
+kubectl get ds -n kube-system
+NAME         DESIRED  CURRENT  READY  NODE SELECTOR
+kube-proxy   3        3        3      beta.kubernetes.io/arch=amd64
+weave-net    3        3        3      <none>

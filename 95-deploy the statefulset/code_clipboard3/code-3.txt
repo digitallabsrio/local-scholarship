@@ -1,0 +1,6 @@
+$ kubectl get sts --watch
+NAME      READY   AGE
+tkb-sts   0/3     10s
+tkb-sts   1/3     23s
+tkb-sts   2/3     46s
+tkb-sts   3/3     69s

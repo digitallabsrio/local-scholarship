@@ -1,0 +1,3 @@
+$ kubectl create configmap testmap1 \
+  --from-literal shortname=msb.com \
+  --from-literal longname=magicsandbox.com

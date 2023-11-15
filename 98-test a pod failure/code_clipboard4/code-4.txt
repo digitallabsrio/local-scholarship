@@ -1,0 +1,6 @@
+$ kubectl scale sts tkb-sts --replicas=0
+statefulset.apps/tkb-sts scaled
+
+$ kubectl get sts tkb-sts
+NAME      READY   AGE
+tkb-sts   0/0     86m

@@ -1,0 +1,5 @@
+$ kubectl get pvc
+NAME                STATUS   VOLUME            CAPACITY   MODES   STORAGECLASS   AGE
+webroot-tkb-sts-0   Bound    pvc-1146...f274   10Gi       RWO     flash          15m
+webroot-tkb-sts-1   Bound    pvc-3026...6bcb   10Gi       RWO     flash          15m
+webroot-tkb-sts-2   Bound    pvc-2ce7...e56d   10Gi       RWO     flash          15m

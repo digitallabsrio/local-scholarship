@@ -1,0 +1,3 @@
+NAME                  DESIRED  CURRENT  READY  AGE
+hello-deploy-6bc8...  10       10       10     10m
+hello-deploy-7bbd...  0        0        0      52m

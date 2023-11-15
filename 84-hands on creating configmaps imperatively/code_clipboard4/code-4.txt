@@ -1,0 +1,1 @@
+$ kubectl create cm testmap2 --from-file cmfile.txt

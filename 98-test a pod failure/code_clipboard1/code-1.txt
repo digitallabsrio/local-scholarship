@@ -1,0 +1,12 @@
+$ kubectl describe pod tkb-sts-0
+Name:         tkb-sts-0
+Namespace:    default
+<Snip>
+Status:       Running
+IP:           10.24.1.13
+<Snip>
+Volumes:
+  webroot:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim...)
+    ClaimName:  webroot-tkb-sts-0
+<Snip>

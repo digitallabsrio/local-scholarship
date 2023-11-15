@@ -1,0 +1,1 @@
+$ kubectl describe ep hello-svc

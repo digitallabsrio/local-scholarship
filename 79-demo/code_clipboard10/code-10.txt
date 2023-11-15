@@ -1,0 +1,2 @@
+NAME        STATUS   VOLUME         CAPACITY   ACCESS MODES   STORAGECLASS
+pv-ticket   Bound    pvc-881a23...  25Gi       RWO            slow

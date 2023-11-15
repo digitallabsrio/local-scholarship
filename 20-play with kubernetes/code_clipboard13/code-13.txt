@@ -1,0 +1,7 @@
+Initializing machine ID from random generator.
+[preflight] running pre-flight checks
+<Snip>
+This node has joined the cluster:
+* Certificate signing request was sent to master and a response
+  was received.
+* The Kubelet was informed of the new secure connection details.

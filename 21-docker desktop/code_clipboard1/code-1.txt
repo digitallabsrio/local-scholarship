@@ -1,0 +1,2 @@
+NAME                 STATUS   ROLES    AGE   VERSION
+docker-for-desktop   Ready    master   28d   v1.16.6

@@ -1,0 +1,12 @@
+Name:         hello-svc
+Namespace:    default
+Labels:       <none>
+Annotations:  endpoints.kubernetes.io/last-change...
+Subsets:
+  Addresses:  100.96.1.10,100.96.1.11,100.96.1.12...
+  NotReadyAddresses:   <none>
+  Ports:
+    Name      Port     Protocol
+    ----      ----     --------
+    <unset>   8080     TCP
+Events: <none>

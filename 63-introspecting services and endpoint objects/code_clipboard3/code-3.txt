@@ -1,0 +1,14 @@
+Name:                     hello-svc
+Namespace:                default
+Labels:                   <none>
+Annotations:              kubectl.kubernetes.io/last-applied-configuration...
+Selector:                 app=hello-world
+Type:                     NodePort
+IP:                       100.70.40.2
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  30001/TCP
+Endpoints:                100.96.1.10:8080, 100.96.1.11:8080, + more...
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>

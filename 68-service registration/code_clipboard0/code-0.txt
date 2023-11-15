@@ -1,0 +1,12 @@
+$ kubectl get svc -n kube-system -l k8s-app=kube-dns
+NAME       TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                  AGE
+kube-dns   ClusterIP   192.168.200.10   <none>        53/UDP,53/TCP,9153/TCP   3h44m
+
+$ kubectl get deploy -n kube-system -l k8s-app=kube-dns
+NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+coredns   2/2     2            2           3h45m
+
+$ kubectl get pods -n kube-system -l k8s-app=kube-dns
+NAME                       READY   STATUS    RESTARTS   AGE
+coredns-5644d7b6d9-fk4c9   1/1     Running   0          3h45m
+coredns-5644d7b6d9-s5zlr   1/1     Running   0          3h45m

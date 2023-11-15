@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: tkb-sts
+spec:
+  selector:
+    matchLabels:
+      app: mongo
+  serviceName: "tkb-sts"
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+      - name: ctr-mongo
+        image: mongo:latest
+        ...

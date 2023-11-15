@@ -1,0 +1,2 @@
+NAME      STATUS    ROLES     AGE       VERSION
+node1     Ready     master  2m        v1.18.4

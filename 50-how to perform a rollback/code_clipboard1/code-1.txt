@@ -1,0 +1,4 @@
+deployment.apps/hello-deploy
+REVISION  CHANGE-CAUSE
+1         <none>
+2         kubectl apply --filename-deploy.yml --record=true

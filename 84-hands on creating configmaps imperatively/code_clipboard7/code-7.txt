@@ -1,0 +1,11 @@
+Name:         testmap2
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+cmfile.txt:
+----
+Magic Sandbox, hands-on learning that blurs the lines between training and the real world.
+Events:  <none>

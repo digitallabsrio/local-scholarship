@@ -1,0 +1,5 @@
+configmap/kube-router-cfg created
+daemonset.apps/kube-router created
+serviceaccount/kube-router created
+clusterrole.rbac.authorization.k8s.io/kube-router created
+clusterrolebinding.rbac.authorization.k8s.io/kube-router created

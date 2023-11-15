@@ -1,0 +1,23 @@
+{
+  "kind":"Event",
+  "apiVersion":"audit.k8s.io/v1",
+  "metadata":{ "creationTimestamp":"2019-03-03T10:10:00Z" },
+  "level":"Metadata",
+  "timestamp":"2019-03-03T10:10:00Z",
+  "auditID":"7e0cbccf-8d8a-4f5f-aefb-60b8af2d2ad5",
+  "stage":"RequestReceived",
+  "requestURI":"/api/v1/namespaces/default/persistentvolumeclaims",
+  "verb":"list",
+  "user": {
+    "username":"fname.lname@example.com",
+    "groups":[ "system:authenticated" ]
+  },
+  "sourceIPs":[ "123.45.67.123" ],
+  "objectRef": {
+    "resource":"persistentvolumeclaims",
+    "namespace":"default",
+    "apiVersion":"v1"
+  },
+  "requestReceivedTimestamp":"2010-03-03T10:10:00.123456Z",
+  "stageTimestamp":"2019-03-03T10:10:00.123456Z"
+}

@@ -1,0 +1,7 @@
+$ dig SRV dullahan.default.svc.cluster.local
+<Snip>
+;; ADDITIONAL SECTION:
+tkb-sts-0.dullahan.default.svc.cluster.local. 30 IN A 10.24.1.25
+tkb-sts-2.dullahan.default.svc.cluster.local. 30 IN A 10.24.1.26
+tkb-sts-1.dullahan.default.svc.cluster.local. 30 IN A 10.24.0.17
+<Snip>

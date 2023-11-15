@@ -1,0 +1,9 @@
+volumeClaimTemplates:
+- metadata:
+    name: webroot
+  spec:
+    accessModes: [ "ReadWriteOnce" ]
+    storageClassName: "flash"
+    resources:
+      requests:
+        storage: 10Gi

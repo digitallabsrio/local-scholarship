@@ -1,0 +1,2 @@
+NAME        READY    STATUS             RESTARTS   AGE
+hello-pod   0/1      ContainerCreating  0          9s

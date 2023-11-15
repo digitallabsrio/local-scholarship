@@ -1,0 +1,6 @@
+$ kubectl logs coredns-5644d7b6d9-74pv7 -n kube-system
+2020-02-19T21:31:01.456Z [INFO] plugin/reload: Running configuration...
+2020-02-19T21:31:01.457Z [INFO] CoreDNS-1.6.2
+2020-02-19T21:31:01.457Z [INFO] linux/amd64, go1.12.8, 795a3eb
+CoreDNS-1.6.2
+linux/amd64, go1.12.8, 795a3eb

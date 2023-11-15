@@ -1,0 +1,14 @@
+Name:         testmap1
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+shortname:
+----
+msb.com
+longname:
+----
+magicsandbox.com
+Events:  <none>

@@ -1,0 +1,14 @@
+Name:                     hello-svc
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=hello-world
+Type:                     NodePort
+IP:                       192.168.201.116
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset> 30175/TCP
+Endpoints:                192.168.128.13:8080,192.168.128.249:8080, + more...
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>

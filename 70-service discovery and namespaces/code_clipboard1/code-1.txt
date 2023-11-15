@@ -1,0 +1,8 @@
+$ kubectl apply -f sd-example.yml
+namespace/dev created
+namespace/prod created
+deployment.apps/enterprise created
+deployment.apps/enterprise created
+service/ent created
+service/ent created
+pod/jump-pod created

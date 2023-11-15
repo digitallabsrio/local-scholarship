@@ -1,0 +1,2 @@
+$ kubectl apply -f headless-svc.yml
+service/tkb-sts created

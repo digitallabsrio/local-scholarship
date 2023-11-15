@@ -1,0 +1,6 @@
+[kubeadm] WARNING: kubeadm is in beta, do not use it for prod...
+[init] Using Kubernetes version: v1.18.8
+[init] Using Authorization modes: [Node RBAC]
+<Snip>
+Your Kubernetes master has initialized successfully!
+<Snip>

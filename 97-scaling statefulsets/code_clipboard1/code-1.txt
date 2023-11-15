@@ -1,0 +1,8 @@
+$ kubectl get sts tkb-sts
+NAME      READY   AGE
+tkb-sts   2/2     14m
+
+$ kubectl get pods
+NAME        READY   STATUS    RESTARTS   AGE
+tkb-sts-0   1/1     Running   0          15m
+tkb-sts-1   1/1     Running   0          15m

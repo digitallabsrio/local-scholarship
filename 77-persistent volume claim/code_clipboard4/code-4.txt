@@ -1,0 +1,2 @@
+NAME   STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS
+pvc1   Bound    pv1      10Gi       RWO            test

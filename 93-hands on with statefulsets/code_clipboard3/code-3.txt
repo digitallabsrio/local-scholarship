@@ -1,0 +1,3 @@
+$ kubectl get sc
+NAME   PROVISIONER            RECLAIMPOLICY  VOLUMEBINDINGMODE      ALLOWEXPANSION   AGE
+flash  pd.csi.storage.gke.io  Delete         WaitForFirstConsumer   true             5s
